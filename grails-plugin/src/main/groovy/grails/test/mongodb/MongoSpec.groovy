@@ -90,7 +90,7 @@ abstract class MongoSpec extends Specification {
     }
 
     void cleanup() {
-        if (!mongoDatastore.hasCurrentSession()) {
+        if (mongoDatastore.hasCurrentSession()) {
             TransactionSynchronizationManager.unbindResource(mongoDatastore)
             DatastoreUtils.closeSessionOrRegisterDeferredClose(session, mongoDatastore)
         }
